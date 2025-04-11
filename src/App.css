@@ -1,38 +1,250 @@
+:root {
+  /* Light theme */
+  --primary: #2dd4bf;
+  --secondary: #0f172a;
+  --text: #1e293b;
+  --background: #ffffff;
+  --accent: #22d3ee;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.95);
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --heading-color: #0f172a;
+  --section-bg: #f8fafc;
+  --title-color: #000000; /* Noir pour les titres en mode clair */
+  --subtitle-color: #1e293b; /* Couleur foncée pour les sous-titres en mode clair */
+}
+
+[data-theme='dark'] {
+  --primary: #2dd4bf;
+  --secondary: #e2e8f0;
+  --text: #e2e8f0;
+  --background: #0f172a;
+  --accent: #22d3ee;
+  --nav-bg: rgba(15, 23, 42, 0.8);
+  --nav-bg-scrolled: rgba(15, 23, 42, 0.95);
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(15, 23, 42, 0.8);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --heading-color: #ffffff;
+  --section-bg: #1a2234;
+  --title-color: #2196F3; /* Bleu pour les titres en mode sombre */
+  --subtitle-color: #e2e8f0; /* Couleur claire pour les sous-titres en mode sombre */
+}
+
+/* Base styles */
+body {
+  background-color: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
 .App {
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+/* Sections */
+section {
+  background-color: var(--section-bg);
+  color: var(--text);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+}
+
+/* Cards and containers */
+.project-card,
+.skill-card,
+.about-card,
+.contact-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text);
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+/* Links */
+a {
+  color: var(--primary);
+}
+
+/* Navigation */
+.navbar {
+  background: var(--nav-bg);
+}
+
+.navbar.scrolled {
+  background: var(--nav-bg-scrolled);
+}
+
+.nav-button {
+  color: var(--text);
+}
+
+/* Forms */
+input,
+textarea {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border-color);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--hover-bg);
+  color: var(--text);
+  border: 1px solid var(--border-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--primary);
+  color: var(--background);
+}
+
+/* Global transitions */
+* {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Loader */
+.loader {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background);
+}
+
+.loader-content {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loader-circle {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--text);
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 5%;
+  }
+  
+  h2 {
+    font-size: 2rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Mise à jour des styles de la navbar */
+.navbar {
+  background: var(--nav-bg);
+  transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: var(--nav-bg-scrolled);
+}
+
+.navbar-links {
+  background: var(--nav-bg);
+  transition: background-color 0.3s ease;
+}
+
+.nav-button {
+  color: var(--text);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  background: var(--hover-bg);
+  color: var(--text);
+  transition: all 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--hover-bg);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Animation pour le changement de thème */
+.theme-toggle {
+  animation: rotate 0.5s ease;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mise à jour des styles pour les titres et textes */
+.project-card h3,
+.skill-category h3,
+.exam-card h3,
+.about-text h3 {
+  color: var(--title-color);
+}
+
+.skill-name,
+.exam-header h3,
+.project-card h3 {
+  color: var(--title-color);
+}
+
+.exam-coef {
+  color: var(--title-color);
+  background: var(--hover-bg);
+}
+
+.exam-subdetail h4 {
+  color: var(--subtitle-color);
 }

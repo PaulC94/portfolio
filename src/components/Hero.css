@@ -1,0 +1,165 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  opacity: 0.1;
+  animation: rotate 20s linear infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.glitch {
+  position: relative;
+}
+
+.glitch span:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, 2px);
+  opacity: 0.75;
+}
+
+.glitch span:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+  transform: translate(2px, -2px);
+  opacity: 0.75;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--secondary);
+}
+
+.btn-secondary {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.hero-social {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hero-social a {
+  color: var(--text);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.hero-social a:hover {
+  color: var(--primary);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.mouse {
+  width: 26px;
+  height: 40px;
+  border: 2px solid var(--text);
+  border-radius: 20px;
+  margin: 0 auto 1rem;
+  position: relative;
+}
+
+.mouse::before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--text);
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 6px;
+  animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 20px); opacity: 0; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
